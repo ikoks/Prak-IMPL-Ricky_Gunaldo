@@ -1,3 +1,5 @@
+package Latihan_ISP;
+
 public class Car implements VehicleInterface, DoorInterface {
     @Override
     public void drive() {}
