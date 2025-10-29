@@ -11,5 +11,5 @@ public class Car implements VehicleInterface, DoorInterface {
     public void refuel() {}
 
     @Override
-    public void openDoors() {}
+    public void openDoor() {}
 }
