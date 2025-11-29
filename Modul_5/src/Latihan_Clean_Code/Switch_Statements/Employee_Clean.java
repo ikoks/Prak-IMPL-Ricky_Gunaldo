@@ -12,19 +12,4 @@ public class Employee_Clean {
     public int getBonus() {
         return 1;
     }
-
-    abstract class EmployeeType {
-        abstract int payAmount(Employee emp);
-    }
-    public class Salesman {
-        int payAmount(Employee emp) {
-            return emp.getMonthlySalary() + emp.getCommission();
-        }
-    }
-
-    public class Manager {
-        int payAmount(Employee emp) {
-            return emp.getMonthlySalary() + emp.getBonus();
-        }
-    }
 }
