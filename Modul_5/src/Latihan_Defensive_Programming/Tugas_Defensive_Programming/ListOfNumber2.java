@@ -8,35 +8,68 @@ public class ListOfNumbers2 {
     private static final int size = 10;
 
     public ListOfNumbers2() {
-        victor = new Vector(size);
-        for (int i = 0; i < size; i++)
+        victor = new Vector<Integer>(size);
+
+        for (int i = 0; i < size; i++) {
             victor.addElement(new Integer(i));
+        }
+
         this.readList("infile.txt");
         this.writeList();
     }
 
     public void readList(String fileName) {
         String line = null;
-        RandomAccessFile raf = new RandomAccessFile(fileName, "r");
-        while ((line = raf.readLine()) != null) {
-            Integer i = new Integer(Integer.parseInt(line));
-            System.out.println(i);
-            victor.addElement(i);
+        RandomAccessFile raf = null;
+        try {
+            raf = new RandomAccessFile(fileName, "r");
+            while ((line = raf.readLine()) != null) {
+                Integer i = new Integer.valueOf(Integer.parseInt(line));
+                System.out.println(i);
+                victor.addElement(i);
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Error: File " + fileName + "Not Found.");
+        } catch (IOException e) {
+            System.err.println("Error: Gagal membaca file. " + e.getMessage());
+        } finally {
+            if (raf != null) {
+                try {
+                    raf.close();
+                } catch (IOException e) {
+                    System.err.println("Error: " + e.getMessage());
+                }
+            }
         }
     }
-    //tambahkan exception jika file tidak ditemukan
-    //tambahkan exception untuk output error
 
     public void writeList() {
         PrintWriter out = null;
-        out = new PrintWriter(new FileWriter("outfile.txt"));
-        for (int i = 0; i < victor.size(); i++)
-            out.println("Value at: " + i + " = " +
-                victor.elementAt(i));
-        //Tambahkan Exception jika array melebihi batas
-        //Tambahkan Exception untuk output error
-        //Tambahkan Exception untuk exception akhir menampilkan Closing Print
-        Writer jika out tidak null dan Printwriter not open jika out null
+
+        try{
+            out = new PrintWriter(new FileWriter("outfile.txt"));
+
+            for (int i = 0; i < victor.size(); i++) {
+                try {
+                    out.println("Value at: " + i + " = " + victor.elementAt(i));
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.err.println("Error: Index array melebihi batas pada index " + i);
+                }
+            }
+            //Tambahkan Exception jika array melebihi batas
+            //Tambahkan Exception untuk output error
+            //Tambahkan Exception untuk exception akhir menampilkan Closing Print
+            Writer jika out tidak null dan Printwriter not open jika out null
+        } catch (IOException e) {
+            System.err.println("Error: Gagal menulis ke file txt");
+        } finally {
+            if (out != null) {
+                System.out.println("Closing PrintWriter");
+                out.close();
+            } else {
+                System.out.println("PrintWriter not open");
+            }
+        }
     }
 
     public static void main(String[] args) {
