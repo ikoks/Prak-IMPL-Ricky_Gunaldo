@@ -8,7 +8,7 @@ public class Tugas1 {
         try {
             System.out.println(3/0);
         } catch (ArithmeticException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error: Tidak bisa membagi bilangan bulat dengan nol.");
         }
     }
 }
