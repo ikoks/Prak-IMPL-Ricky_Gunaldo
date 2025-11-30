@@ -3,15 +3,15 @@ package Latihan_Defensive_Programming.Tugas_Defensive_Programming;
 import java.io.*;
 import java.util.Vector;
 
-public class ListOfNumbers2 {
-    private Vector victor;
+public class ListOfNumber2 {
+    private Vector<Integer> victor;
     private static final int size = 10;
 
-    public ListOfNumbers2() {
+    public ListOfNumber2() {
         victor = new Vector<Integer>(size);
 
         for (int i = 0; i < size; i++) {
-            victor.addElement(new Integer(i));
+            victor.addElement(Integer.valueOf(i));
         }
 
         this.readList("infile.txt");
@@ -24,7 +24,7 @@ public class ListOfNumbers2 {
         try {
             raf = new RandomAccessFile(fileName, "r");
             while ((line = raf.readLine()) != null) {
-                Integer i = new Integer.valueOf(Integer.parseInt(line));
+                Integer i = Integer.valueOf(Integer.parseInt(line));
                 System.out.println(i);
                 victor.addElement(i);
             }
@@ -56,10 +56,7 @@ public class ListOfNumbers2 {
                     System.err.println("Error: Index array melebihi batas pada index " + i);
                 }
             }
-            //Tambahkan Exception jika array melebihi batas
-            //Tambahkan Exception untuk output error
-            //Tambahkan Exception untuk exception akhir menampilkan Closing Print
-            Writer jika out tidak null dan Printwriter not open jika out null
+
         } catch (IOException e) {
             System.err.println("Error: Gagal menulis ke file txt");
         } finally {
@@ -73,6 +70,6 @@ public class ListOfNumbers2 {
     }
 
     public static void main(String[] args) {
-        new ListOfNumbers2();
+        new ListOfNumber2();
     }
 }
