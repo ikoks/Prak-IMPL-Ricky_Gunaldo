@@ -1,0 +1,2 @@
+CREATE DATABASE IF NOT EXISTS db_modul7
+USE db_modul7;
