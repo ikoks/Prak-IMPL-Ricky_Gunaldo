@@ -26,4 +26,19 @@ public class CourseRecord {
     public Enumeration getAssignments() {
         return assignments.elements();
     }
+
+    public double getFinalMark() throws NotYetSetException {
+        if (assignments.isEmpty()) {
+            throw new NotYetSetException("Belum ada assignment untuk mahasiswa: " + (student != null ?
+            student.getName() : "unknown"));
+        }
+        double total = 0.0;
+        Enumeration e = assignments.elements();
+        while (e.hasMoreElements()) {
+            Assignment a = (Assignment) e.nextElement();
+            total += a.getMark();
+        }
+
+        return total;
+    }
 }

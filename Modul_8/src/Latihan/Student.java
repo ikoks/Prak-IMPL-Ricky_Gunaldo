@@ -2,13 +2,18 @@ package Latihan;
 
 public class Student {
     private String name;
-    Student(){}
+
+    public Student(){}
+
+    public Student(String name){
+        this.name = name;
+    }
 
     public String getName() {
         return name;
     }
 
     public void setName(String n) {
-        name = n;
+        this.name = n;
     }
 }

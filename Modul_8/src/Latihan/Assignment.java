@@ -2,7 +2,12 @@ package Latihan;
 
 public class Assignment {
     private double mark = -1;
-    Assignment() {}
+    public Assignment() {}
+
+    public Assignment(double mark) {
+        this.mark = mark;
+    }
+
     public double getMark() throws NotYetSetException {
         if (mark == -1) {
             throw new NotYetSetException("Mark is not yet set");
@@ -11,6 +16,6 @@ public class Assignment {
     }
 
     public void setMark (int m) {
-        mark = m;
+        this.mark = m;
     }
 }
